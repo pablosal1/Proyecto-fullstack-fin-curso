@@ -1,0 +1,142 @@
+
+
+.navbar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  width: 100%;
+  position: fixed; /* Agrega "position: fixed" para fijar la navbar en la parte superior de la pantalla */
+  top: 0; /* Alinea la navbar en la parte superior de la pantalla */
+  left: 0; /* Alinea la navbar a la izquierda de la pantalla */
+  z-index: 100;
+  background-color: #de8c26;
+  
+  
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-right: 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  margin-right: 20px;
+}
+
+.right-section > *:not(:last-child) {
+  margin-right: 10px;
+}
+
+.login-section {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.profile-link {
+  color: #fff;
+}
+
+.separator {
+  margin: 0 0.5rem;
+}
+
+/* Media query para dispositivos móviles */
+
+  @media screen and (max-width: 480px) {
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+  
+    .nav-links {
+      display: flex;
+    }
+  
+    .right-section {
+      margin-top: 10px;
+    }
+  
+    .login-section {
+      margin-left: 0;
+    }
+  
+    .navbar-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      width: 100%;
+    }
+  
+    .navbar-toggle .line {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      margin-bottom: 5px;
+      transition: all 0.3s ease;
+    }
+  
+    .navbar-toggle.active .line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+  
+    .navbar-toggle.active .line:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .navbar-toggle.active .line:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  
+    .nav-links.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #2b2b2b;
+      margin-top: 10px;
+      padding: 10px 0;
+      width: 100%;
+    }
+  
+    .nav-links.active li {
+      margin-right: 0;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+}
+
+/* Media query para tablet y visualización normal */
+@media screen and (min-width: 481px) {
+  .navbar-toggle {
+    display: none; /* Ocultar el botón de menú hamburguesa */
+  }
+}

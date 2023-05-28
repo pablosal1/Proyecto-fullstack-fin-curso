@@ -1,0 +1,146 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-container {
+  width: 300px;
+  margin: 40px auto -60px auto;
+  background-color: #de8c26;
+  padding: 20px;
+  border-radius: 10px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-user-icon {
+  margin-bottom: 30px;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0px auto 10px auto;
+}
+
+.user-username,
+.user-email,
+.user-name,
+.user-apellidos {
+  margin-bottom: 10px;
+}
+
+button {
+  margin-top: 20px;
+
+}
+
+.boton{
+  background-color: #fff;
+}
+
+a {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
+.profile-actions button {
+  margin-bottom: 10px;
+}
+
+/* Media query para teléfono */
+@media screen and (max-width: 480px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar {
+    width: 100%;
+  }
+
+  .profile-container{
+    margin-top: 100px;
+  }
+
+  .container {
+    margin-bottom: 0;
+  }
+
+  .footer {
+    padding: 20px 0;
+    margin-top: 50px;
+    position: fixed;
+    background-color: #de8c26;
+    min-height: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .footer .icon-container {
+    margin-top: 10px;
+  }
+
+  .footer p {
+    margin-top: 10px;
+  }
+}
+
+/* Media query para tablet */
+@media screen and (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    margin-bottom: 0;
+  }
+
+  .footer {
+    padding: 10px;
+    margin-top: 30px;
+    position: relative;
+  }
+
+  .footer .icon-container {
+    margin-top: 10px;
+  }
+
+  .footer p {
+    margin-top: 0;
+  }
+}

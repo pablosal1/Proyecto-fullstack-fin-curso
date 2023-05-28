@@ -1,0 +1,124 @@
+.contacto-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+  height: 100vh;
+  margin-bottom: 70px;
+  margin-top: 75px
+}
+
+.datos-contacto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 40px;
+  margin-bottom: 20px;
+}
+
+.datos-contacto-info {
+  margin-right: 20px;
+}
+
+.horario-titulo {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.mapa-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 300px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+  margin-top: 10px;
+  
+}
+
+.redes-sociales {
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  margin-left: 30px;
+  
+  margin-top: 0; /* Elimina el margen superior */
+  margin-bottom: 0;
+}
+
+.icono-facebook,
+.icono-instagram,
+.icono-tripadvisor {
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+/* Media query para tablet */
+@media screen and (max-width: 768px) {
+  .contacto-container {
+    align-items: center;
+  }
+
+  .datos-contacto {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .horario-titulo {
+    margin-bottom: 20px;
+  }
+
+  .mapa-container {
+    margin-right: 0;
+  }
+
+  .redes-sociales {
+    margin-left: 0;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Media query para teléfono */
+@media screen and (max-width: 481px) {
+
+  .contacto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .redes-sociales {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .redes-sociales a {
+    margin: 0 10px;
+  }
+  
+  .icono-facebook,
+  .icono-instagram,
+  .icono-tripadvisor {
+    font-size: 24px;
+  }
+  .horario-titulo {
+    text-align: center;
+  }
+  .mapa-container {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  .mapa-container iframe {
+    width: 100%;
+  }
+  .navbar {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
