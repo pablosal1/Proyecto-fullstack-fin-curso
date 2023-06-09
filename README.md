@@ -60,18 +60,17 @@ tiene permisos de: Crear producto, modificar producto, Eliminar producto y ver p
 ## Endpoints.
 Para este proyecto hemos usado diferentes endpoints los cuales son:
 
-Para USUARIOS:
-http://localhost:9000/auth/login          Metodo: POST     admin/user  ( Iniciar sesion ).
-http://localhost:9000/auth/user/:id       Metodo: GET      admin/user ( Mostrar usuario seleccionado ).
-http://localhost:9000/auth/user/:id       Metodo: PATCH    admin/user ( Modificar usuarios ).
-http://localhost:9000/auth/logout         Metodo: POST     admin/user ( Cerrar sesion ).
-
-Para PRODUCTOS:
-http://localhost:9000/productos           Metodo GET       admin/user ( Mostrar todos los productos )
-http://localhost:9000/productos/:id       Metodo GET       admin/user ( Mostrar producto seleccionado )
-http://localhost:9000/auth/productos      Metodo POST      admin ( Añadir productos )
-http://localhost:9000/auth/productos/:id  Metodo PATCH     admin ( Modificar producto seleccionado )
-http://localhost:9000/auth/productos/:id  Metodo DELETE    admin ( Eliminar producto seleccionado )
+| Método | Endpoint                            | Rol           | Descripción                            |
+|--------|-------------------------------------|---------------|----------------------------------------|
+| POST   | /auth/login                         | admin/user    | Iniciar sesión                         |
+| GET    | /auth/user/:id                      | admin/user    | Mostrar usuario seleccionado           |
+| PATCH  | /auth/user/:id                      | admin/user    | Modificar usuarios                     |
+| POST   | /auth/logout                        | admin/user    | Cerrar sesión                          |
+| GET    | /productos                          | admin/user    | Mostrar todos los productos            |
+| GET    | /productos/:id                      | admin/user    | Mostrar producto seleccionado          |
+| POST   | /auth/productos                     | admin         | Añadir productos                       |
+| PATCH  | /auth/productos/:id                 | admin         | Modificar producto seleccionado        |
+| DELETE | /auth/productos/:id                 | admin         | Eliminar producto seleccionado         |
 
 ## Instalacion.
  - Para utilizar la base de datos primero hay que abrir el terminal y acceder a la carpeta la cual estan los archivos de BBDD de mongo ( En nuestro caso seria "/Proyecto/BBDD/dump).
