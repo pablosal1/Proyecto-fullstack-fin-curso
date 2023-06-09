@@ -60,7 +60,7 @@ tiene permisos de: Crear producto, modificar producto, Eliminar producto y ver p
 ## Endpoints.
 Para este proyecto hemos usado diferentes endpoints los cuales son:
 
-| Método | Endpoint                            | Rol           | Descripción                            |
+| Método | Endpoint                            | Role           | Descripción                            |
 |--------|-------------------------------------|---------------|----------------------------------------|
 | POST   | /auth/login                         | admin/user    | Iniciar sesión                         |
 | GET    | /auth/user/:id                      | admin/user    | Mostrar usuario seleccionado           |
