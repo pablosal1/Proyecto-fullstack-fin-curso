@@ -73,7 +73,7 @@ Para este proyecto hemos usado diferentes endpoints los cuales son:
 | DELETE | /auth/productos/:id                 | admin         | Eliminar producto seleccionado         |
 | POST   | /contacto                           | admin/user    | Añadir mensaje                         |
 | GET    | /contacto                           | admin         | Mostrar mensajes                       |
-| DELETE | /auth/productos/:id                 | admin         | Eliminar mensaje seleccionado          |
+| DELETE | /contacto/:id                       | admin         | Eliminar mensaje seleccionado          |
 
 ## Instalacion.
  - Para utilizar la base de datos primero hay que abrir el terminal y acceder a la carpeta la cual estan los archivos de BBDD de mongo ( En nuestro caso seria "/Proyecto/BBDD/dump).
