@@ -71,12 +71,15 @@ Para este proyecto hemos usado diferentes endpoints los cuales son:
 | POST   | /auth/productos                     | admin         | Añadir productos                       |
 | PATCH  | /auth/productos/:id                 | admin         | Modificar producto seleccionado        |
 | DELETE | /auth/productos/:id                 | admin         | Eliminar producto seleccionado         |
+| POST   | /contacto                           | admin/user    | Añadir mensaje                         |
+| GET    | /contacto                           | admin         | Mostrar mensajes                       |
+| DELETE | /auth/productos/:id                 | admin         | Eliminar mensaje seleccionado          |
 
 ## Instalacion.
  - Para utilizar la base de datos primero hay que abrir el terminal y acceder a la carpeta la cual estan los archivos de BBDD de mongo ( En nuestro caso seria "/Proyecto/BBDD/dump).
 Una vez dentro ejecutamos el siguiente comando para copiar la base de datos. " mongorestore --db pasteleria dump/pasteleria ".
 
- - Para usar este Backend, debemos de en la terminal acceder a la carpeta Backend( En este caso seria Proyecto/Backend/ ), y ejecutar el comando " npm install " para instalar las dependencias que hay en el proyecto. Una vez que termine de instalar, procedemos a renombrar el archivo " env.ejemplo " y lo llamaremos " .env " . Luego ejecutamos el comando " npm start " y tendremos nuestro backend operativo.
+ - Para usar este Backend, debemos de en la terminal acceder a la carpeta Backend( En este caso seria Proyecto/Backend/ ), y ejecutar el comando " npm install " para instalar las dependencias que hay en el proyecto. Una vez que termine de instalar, procedemos a ejecutarlo con el comando " npm start " y tendremos nuestro backend operativo.
 
  - Para el Frontent, abrimos una nueva terminal , accedemos a la carpeta Frontend ( Proyecto/Frontend/ ), ejecutamos el comando " npm install " y cuando termine como en el ejemplo anterior utilizamos el " npm start ".
 
