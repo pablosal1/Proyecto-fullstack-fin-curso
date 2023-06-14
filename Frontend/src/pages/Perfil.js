@@ -8,7 +8,7 @@ function Perfil() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
-  const { userId } = useContext(UserIdContext);
+  const { userId, isAdmin } = useContext(UserIdContext);
   
   useEffect(() => {
     const fetchUserData = async () => {
@@ -39,10 +39,15 @@ function Perfil() {
     fetchUserData();
   }, [userId]);
 
+  
   const handleEditProfile = () => {
     navigate(`/perfil/modificarperfil/${id}`);
   };
-
+  
+  const navigateToContactoAdmin = () => {
+    navigate('/ContactoAdmin');
+  };
+  
   return (
     <div className="container">
       <div className="profile-container">
@@ -69,7 +74,16 @@ function Perfil() {
             )}
           </div>
           <div className="profile-actions">
-            <button className='boton' onClick={handleEditProfile}>Editar perfil</button>
+            <button className='perfil-button' onClick={handleEditProfile}>Editar perfil</button>
+            {isAdmin ? (
+            <>
+              <button className='perfil-button' onClick={navigateToContactoAdmin}>
+                Contacto Admin
+              </button>
+            
+            </>
+          ) : null}
+            
             <Link to="/">Volver al inicio</Link>
           </div>
         </div>

@@ -58,17 +58,19 @@ function ModificarPerfil() {
         if (result.status === 'succeeded') {
           window.location.reload();
         } else {
-          console.error('Error al modificar el perfil:', result.error);
+          throw new Error(result.error);
         }
       })
       .catch((error) => {
-        console.error('Error al realizar la solicitud:', error);
+        alert(`Error al realizar la solicitud: ${error.message}`);
       });
+
 
     navigate(`/perfil/user/${id}`);
   };
 
   return (
+    <div> 
     <form className="modificar-user-form" onSubmit={handleSubmit}>
       <input
         type="text"
@@ -106,8 +108,9 @@ function ModificarPerfil() {
         onChange={handleImageChange} />
 
 
-      <button className= "button" type="submit">Modificar Perfil</button>
+      <button className= "modificar-button" type="submit">Modificar Perfil</button>
     </form>
+    </div>
   );
 }
 

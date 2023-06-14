@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "./FormularioProducto.css";
 
 function FormularioProducto() {
   const navigate = useNavigate();
@@ -19,8 +20,8 @@ function FormularioProducto() {
     // Crea un objeto FormData para enviar los datos y la imagen al servidor
     const formData = new FormData();
     formData.append('nombrePastel', nombrePastel);
-    formData.append('descripcionPastel', descripcionPastel);
     formData.append('precio', precio);
+    formData.append('descripcionPastel', descripcionPastel);
     formData.append('file', file);
 
     // Realiza la solicitud POST al servidor
@@ -36,8 +37,8 @@ function FormularioProducto() {
           // El producto se agregó correctamente
           // Restablece los valores del formulario después de enviar
           setNombrePastel('');
-          setDescripcionPastel('');
           setPrecio('');
+          setDescripcionPastel('');
           setFile(null);
           navigate('/productos');
         } else {
@@ -50,12 +51,12 @@ function FormularioProducto() {
   };
 
   return (
-    <div >
+    <div>
       <h2 className="form-title">Añadir Producto</h2>
-      <form className="form-wrapper" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="nombrePastel" className="label">Nombre:</label>
-          <input className="input"
+      <form className="form-wrapper-formulario" onSubmit={handleSubmit}>
+        <div className="form-group-formulario-producto">
+          <label htmlFor="nombrePastel" className="label-formulario-producto">Nombre:</label>
+          <input className="input-formulario-producto"
             type="text"
             id="nombrePastel"
             value={nombrePastel}
@@ -64,9 +65,9 @@ function FormularioProducto() {
           />
         </div>
         
-        <div className="form-group">
-          <label htmlFor="precio" className="label">Precio:</label>
-          <input className="input"
+        <div className="form-group-formulario-producto">
+          <label htmlFor="precio" className="label-formulario-producto">Precio:</label>
+          <input className="input-formulario-producto"
             type="number"
             id="precio"
             value={precio}
@@ -74,8 +75,18 @@ function FormularioProducto() {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="file" className="label">Imagen:</label>
+        <div className="form-group-formulario-producto">
+          <label htmlFor="descripcionPastel" className="label-formulario-producto">Descripcion:</label>
+          <input className="input-formulario-producto"
+            type="text"
+            id="descripcionPastel"
+            value={descripcionPastel}
+            onChange={(e) => setDescripcionPastel(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group-formulario-producto">
+          <label htmlFor="file" className="label-formulario-producto">Imagen:</label>
           <input
             type="file"
             id="file"
@@ -83,7 +94,7 @@ function FormularioProducto() {
             required
           />
         </div>
-        <button className="button" type="submit">Agregar</button>
+        <button className="button-formulario-producto" type="submit">Agregar</button>
       </form>
     </div>
   );

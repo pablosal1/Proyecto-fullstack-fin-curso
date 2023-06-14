@@ -12,7 +12,7 @@ body {
   left: 0;
   right: 0;
   font-size: 14px;
-  padding: 20px;
+ 
 }
 
 .footer .icon-container {
@@ -55,16 +55,16 @@ body {
   }
   
   .footer {
-    padding: 20px 0;
+    padding: 30px 0;
     margin-top: 50px;
     position: fixed;
     background-color: #de8c26;
     min-height: 30px;
-    bottom: 0;
+    margin-bottom: 0px;
     clear: both;
     width: 100%;
-    display: flex; /* Añade display flex */
-    justify-content: center; /* Centra horizontalmente los elementos */
+    display: flex; 
+    justify-content: center; 
     align-items: center;
     text-align: center;
   }
@@ -87,7 +87,7 @@ body {
   
   .footer {
     position: fixed;
-    bottom: 0;
+   
     left: 0;
     right: 0;
   }
@@ -97,6 +97,10 @@ body {
   }
 
   .footer p {
-    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-right: 50px;
+  }
+  .search-bar input {
+    width: 70%;
   }
 }

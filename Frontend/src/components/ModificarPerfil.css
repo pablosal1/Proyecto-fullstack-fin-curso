@@ -43,9 +43,24 @@
   flex-direction: column;
 }
 
-.button{
+.modificar-button{
   justify-content: center;
   align-items: center;
   width: 80%;
-  margin-left: 35px;
+  margin-left: 15px;
+}
+.success-message {
+  color: green;
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+/* Media query para teléfono */
+@media screen and (max-width: 480px) {
+  .modificar-user-form{
+    margin-top: 150px;
+  }
 }

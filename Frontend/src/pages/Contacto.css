@@ -2,16 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; 
-  height: 100vh;
-  margin-bottom: 70px;
-  margin-top: 75px
+  height: 180vh;
+  margin-bottom: 50px;
+  margin-top: 90px;
+  
 }
 
 .datos-contacto {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   margin-right: 40px;
   margin-bottom: 20px;
 }
@@ -21,7 +22,7 @@
 }
 
 .horario-titulo {
-  text-align: left;
+  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -29,6 +30,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 400px;
   height: 300px;
   margin-right: 50px;
@@ -36,14 +38,16 @@
   margin-top: 10px;
   
 }
-
+.titulo-rss{
+  margin-top: 60px;
+}
 .redes-sociales {
   display: flex;
   flex-direction: center;
   align-items: center;
+  justify-content: center;
   margin-left: 30px;
-  
-  margin-top: 0; /* Elimina el margen superior */
+  margin-top: 0; 
   margin-bottom: 0;
 }
 
@@ -53,6 +57,76 @@
   font-size: 30px;
   margin-right: 10px;
 }
+
+/* Formulario */
+.form-title-contacto {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: -50px;
+  margin-top: 0px;
+}
+.form-wrapper-contacto {
+  height: 240px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 10px;
+  background-color: #de8c26;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group-contacto {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.label-contacto {
+  display: block;
+  font-weight: bold;
+  margin-right: 10px;
+  width: 100px;
+  color: black;
+}
+
+.input-contacto {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  
+}
+.login-input-email {
+  margin: 0;
+  padding: 10px;
+}
+.button-contacto {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #efefef;
+  color: black;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #efefef;
+}
+
+.form-title-contacto {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+
+
 
 /* Media query para tablet */
 @media screen and (max-width: 768px) {
@@ -89,6 +163,9 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin-bottom: 100px; 
+    margin-top: 120px;
+    
   }
   
   .redes-sociales {
@@ -121,4 +198,47 @@
     width: 80%;
     margin: 0 auto;
   }
+
+  /* formulario */
+  @media screen and (max-width: 481px) {
+    .form-title-contacto {
+      margin-bottom: 10px;
+    }
+  
+    .form-wrapper-contacto {
+      height: auto;
+      width: 100vw;
+      margin: 0 auto;
+      padding: 20px;
+      margin-top: 10px;
+      background-color: #de8c26;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+  
+    .form-group-contacto {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+  
+    .label-contacto {
+      margin-right: 0;
+      margin-bottom: 5px;
+      width: auto;
+      color: black;
+    }
+  
+    .input-contacto {
+      width: 80%;
+      margin-bottom: 10px;
+    }
+  
+    .button-contacto {
+      width: 80%;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+  }
+  
 }

@@ -1,13 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaFacebook, FaInstagram, FaTripadvisor } from 'react-icons/fa';
 import "./Contacto.css";
 const Contacto = () => {
+
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+    const [successMessage, setSuccessMessage] = useState('');
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const data = {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message
+        };
+
+        fetch('http://localhost:9000/contacto', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setSuccessMessage('Formulario enviado con éxito');
+        })
+        .catch((error) => {
+          console.error('Error al enviar el formulario:', error);
+          setSuccessMessage('Ocurrió un error al enviar el formulario');
+        });
+
+        // Reiniciar el estado del formulario
+        setFormData({
+            name: '',
+            email: '',
+            message: ''
+        });
+    };
+
     return (
         <div className="contacto-container">
             <div className="horario-titulo">
                 <h2 >Horario atencion al cliente.</h2>
-                <p>De Martes a Sábados : 10:00–14:00, 16:00–20:00
-                    Domingo y Lunes: Cerrado</p>
+                <p>De Martes a Sábados : 10:00 – 14:00, 16:00 – 20:00
+                    <br /><br />Domingo y Lunes : Cerrado</p>
             </div>
             <div className="datos-contacto">
                 <div className="datos-contacto-info">
@@ -30,7 +78,57 @@ const Contacto = () => {
                     title="Malaga"
                 ></iframe>
             </div>
-            <h4>Siguenos en nuestras redes sociales</h4>
+
+            <h4 className="form-title-contacto">Formulario de contacto</h4>
+            <form className="form-wrapper-contacto" onSubmit={handleSubmit}>
+                <div className="form-group-contacto">
+                    <label htmlFor="name" className="label-contacto">
+                        Nombre:
+                    </label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        className="input-contacto"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-group-contacto">
+                    <label htmlFor="email" className="label-contacto">
+                        Email:
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        className="input-contacto"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-group-contacto">
+                    <label htmlFor="message" className="label-contacto">
+                        Mensaje (300 caracteres máximo):
+                    </label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        className="input-contacto"
+                        required
+                        maxLength={300}  // Limitar a 300 caracteres
+                        value={formData.message}
+                        onChange={handleChange}
+                    ></textarea>
+                </div>
+                <button type="submit" className="button-contacto">Enviar</button>
+            </form>
+            {successMessage && (
+                <div className="success-message">{successMessage}</div>
+            )}
+            <h4 className='titulo-rss'>Siguenos en nuestras redes sociales</h4>
             <div className='redes-sociales'>
                 <a href="https://www.facebook.com/">
                     <FaFacebook className="icono-facebook" />
@@ -42,6 +140,7 @@ const Contacto = () => {
                     <FaTripadvisor className="icono-tripadvisor" />
                 </a>
             </div>
+
         </div>
 
     );

@@ -6,20 +6,16 @@
 
 .profile-container {
   width: 300px;
-  margin: 40px auto -60px auto;
   background-color: #de8c26;
-  padding: 20px;
   border-radius: 10px;
-  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 90px;
 }
 
-.login-user-icon {
-  margin-bottom: 30px;
-}
+
 
 .profile-details {
   display: flex;
@@ -45,14 +41,11 @@
   margin-bottom: 10px;
 }
 
-button {
-  margin-top: 20px;
-
-}
-
-.boton{
+.login-button {
+  margin-top: 5px;
   background-color: #fff;
 }
+
 
 a {
   display: block;
@@ -86,12 +79,13 @@ a {
     width: 100%;
   }
 
-  .profile-container{
-    margin-top: 100px;
-  }
+ 
 
   .container {
-    margin-bottom: 0;
+   
+    height: 100px;
+    margin-top: 40px;
+    margin: 0;
   }
 
   .footer {
@@ -127,7 +121,7 @@ a {
   }
 
   .container {
-    margin-bottom: 0;
+    margin-top: 25px;
   }
 
   .footer {

@@ -85,3 +85,13 @@ html, body {
   flex: 0 0 300px;
   margin: 0 10px;
 }
+
+@media screen and (max-width: 481px) {
+  .home-container{
+    margin-top: 125px;
+  }
+  .card-container{
+    margin-bottom: 100px;
+  }
+ 
+}

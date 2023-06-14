@@ -1,4 +1,4 @@
-.form-wrapper {
+.registro-form-wrapper {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -7,21 +7,21 @@
   margin-top: 75px
 }
 
-.form-group {
+.registro-form-group {
   margin-bottom: 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.label {
+.registro-label {
   display: block;
   font-weight: bold;
   margin-right: 10px;
   width: 100px;
 }
 
-.input {
+.registro-input {
   flex: 1;
   padding: 10px;
   font-size: 16px;
@@ -29,7 +29,7 @@
   border: 1px solid #ccc;
 }
 
-.button {
+.registro-button {
   display: block;
   width: 100%;
   padding: 10px;
@@ -41,7 +41,7 @@
   cursor: pointer;
 }
 
-.button:hover {
+.registro-button:hover {
   background-color: #efefef;
 }
 
@@ -68,32 +68,34 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .form-wrapper {
+  .registro-form-wrapper {
     max-width: 300px; 
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 60px;
   }
 
-  .label {
+  .registro-label {
     width: 80px;
   }
 
-  .button {
+  .registro-button {
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .form-container {
+  .registro-form-container {
     max-width: 100%;
-    margin: 0 auto;
+    margin: 0;
     text-align: center;
-    padding-left: 12px;
+   
+    
   }
-  .form-wrapper {
+  .registro-wrapper {
     max-width: 100%;
     margin: 0 auto;
     display: flex;
@@ -103,7 +105,11 @@
   }
 
 
-  .label {
+  .registro-label {
     width: 80px;
   }
+  .registro-input{
+    width: 90%;
+  }
+  
 }

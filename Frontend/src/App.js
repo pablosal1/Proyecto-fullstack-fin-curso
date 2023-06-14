@@ -4,7 +4,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Contacto from './pages/Contacto';
+import ContactoAdmin from './pages/ContactoAdmin';
 import Productos from './pages/Productos';
+import ProductoDetalle from './pages/ProductoDetalle';
 import Registro from './pages/Registro';
 import Perfil from './pages/Perfil';
 import FormularioProducto from './pages/FormularioProducto';
@@ -17,10 +19,17 @@ import { UserIdContext } from './components/UserIdContext';
 function App() {
   const [userId, setUserId] = useState(null);
   const [userData, setUserData] = useState(null);
- 
+
   useEffect(() => {
     const fetchUserId = async () => {
       try {
+        const accessToken = localStorage.getItem('accessToken');
+        if (!accessToken) {
+          // El usuario no está autenticado, no es necesario hacer la solicitud
+          return;
+        }
+
+
         const response = await fetch('http://localhost:9000/auth/', {
           method: 'GET',
           headers: {
@@ -45,23 +54,25 @@ function App() {
     fetchUserId();
   }, []);
 
-
+  const isAdmin = userData && userData.role === 'admin';
   return (
     <div className="App">
       <BrowserRouter>
-        <UserIdContext.Provider value={{ userId, setUserId, userData, setUserData }}>
+        <UserIdContext.Provider value={{ userId, setUserId, userData, setUserData, isAdmin }}>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contacto" element={<Contacto />} />
+            <Route path="/contactoAdmin" element={<ContactoAdmin />} />
             <Route path="/auth/login" element={<Login />} />
             <Route path="/productos" element={<Productos />} />
+            <Route path="/productos/:id" element={<ProductoDetalle isAdmin={isAdmin} />} />
             <Route path="/productos/modificar/:id" element={<ModificarProducto />} />
             <Route path="/productos/nuevo" element={<FormularioProducto />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/perfil/user/:id" element={<Perfil />} />
             <Route path="/perfil/modificarperfil/:id" element={<ModificarPerfil />} />
-            
+
           </Routes>
           <Footer />
         </UserIdContext.Provider>

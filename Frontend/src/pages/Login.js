@@ -71,7 +71,7 @@ function Login() {
           <h1 className="login-user-icon">
             <FaUserCircle size={90} color="#efefef" />
           </h1>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="email" className="login-label">
               Email:
             </label>
@@ -83,7 +83,7 @@ function Login() {
               className="login-input"
             />
           </div>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="password" className="login-label">
               Contraseña:
             </label>

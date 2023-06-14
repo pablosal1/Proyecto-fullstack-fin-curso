@@ -5,6 +5,7 @@ import './ModificarProducto.css';
 function ModificarProducto() {
   const [nombrePastel, setNombrePastel] = useState('');
   const [precio, setPrecio] = useState('');
+  const [descripcionPastel, setDescripcionPastel] = useState('');
   const [file, setFile] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -16,9 +17,10 @@ function ModificarProducto() {
         const response = await fetch(`http://localhost:9000/productos/${id}`);
         if (response.ok) {
           const data = await response.json();
-          const { nombrePastel, precio } = data.data;
-          setNombrePastel(nombrePastel);
-          setPrecio(precio);
+          const { nombrePastel, precio, descripcionPastel } = data.data;
+          setNombrePastel(nombrePastel || '');
+          setPrecio(precio || '');
+          setDescripcionPastel(descripcionPastel || '');
         } else {
           throw new Error('Error al obtener el producto');
         }
@@ -33,13 +35,14 @@ function ModificarProducto() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!nombrePastel || !precio) {
+    if (!nombrePastel || !precio || !descripcionPastel) {
       return;
     }
 
     const formData = new FormData();
     formData.append('nombrePastel', nombrePastel);
     formData.append('precio', precio);
+    formData.append('descripcionPastel', descripcionPastel);
     if (file) {
       formData.append('imagen', file);
     }
@@ -83,11 +86,18 @@ function ModificarProducto() {
         onChange={(event) => setPrecio(event.target.value)}
         required
       />
+       <input
+        type="text"
+        placeholder="Nueva descripcion del producto"
+        value={descripcionPastel}
+        onChange={(event) => setDescripcionPastel(event.target.value)}
+        required
+      />
       <input
         type="file"
         onChange={(event) => setFile(event.target.files[0])}
       />
-      <button className= "button" type="submit">Modificar Producto</button>
+      <button className= "modificar-producto-button" type="submit">Modificar Producto</button>
       <Link to="/productos" className='link'>Volver a Productos</Link>
     </form>
   );

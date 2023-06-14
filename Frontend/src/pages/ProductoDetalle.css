@@ -1,0 +1,105 @@
+.producto-detalle {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: auto;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #de8c26;
+}
+
+.producto-detalle img {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+
+.producto-detalle .card-body {
+  flex-grow: 1; 
+  text-align: center;
+}
+
+.producto-detalle .card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.producto-detalle .card-description {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.producto-detalle .card-price {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.producto-detalle .card-type {
+  font-size: 14px;
+  color: #777;
+}
+
+.producto-detalle .icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  gap: 10px; 
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.producto-detalle .delete-button,
+.producto-detalle .edit-icon {
+  font-size: 14px;
+  color: grey;
+  cursor: pointer;
+}
+
+.producto-detalle .delete-button i,
+.producto-detalle .edit-icon i {
+  color: red;
+}
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.button-container button {
+  flex-grow: 1;
+}
+
+/* Estilos responsive para teléfono */
+@media (max-width: 600px) {
+  .producto-detalle {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    overflow-y: scroll;
+    height: 500px;
+  }
+
+  .producto-detalle img {
+    height: 280px;
+  }
+}
+
+/* Estilos responsive para tablet */
+@media (max-width: 768px) {
+  .producto-detalle {
+    width: 100%;
+    max-width: 600px;
+  }
+}
