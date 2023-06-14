@@ -11,6 +11,15 @@ const multer = require("multer");
 
 router.post("/register", async (req, res) => {
     try {
+        const existingUser = await Model.findOne({ $or: [{ username: req.body.username }, { email: req.body.email }] }).exec();
+        if (existingUser) {
+            return res.status(409).json({
+                status: "failed",
+                data: null,
+                error: "Username or email already exists. Please choose a different username or email."
+            });
+        }
+
         const data = new Model({
             username: req.body.username,
             nombre: req.body.nombre,
@@ -19,38 +28,33 @@ router.post("/register", async (req, res) => {
             password: await bcrypt.hash(req.body.password, 10),
             role: req.body.role,
         });
-        data.save().then((data) =>
-            res.status(201).json({ status: "succeeded", data, error: null })
-        )
+
+        data.save()
+            .then((data) =>
+                res.status(201).json({ status: "succeeded", data, error: null })
+            )
             .catch((error) => {
-                console.log(Object.keys(error));
-                console.log(error.code);
-                if (error.code == 11000) {
-                    console.log("Clave duplicada");
+                if (error.code === 11000) {
                     return res.status(409).json({
                         status: "failed",
                         data: null,
-                        error: "You are trying to register an existent email, Please choose a new email and try again"
-                    })
+                        error: "You are trying to register an existing email. Please choose a new email and try again."
+                    });
+                } else {
+                    return res.status(400).json({ status: "failed", data: null, error: error.message });
                 }
-                return res.status(400)
-                    .json({ status: "failed", data: null, error: error.message });
-
-
             });
     } catch (error) {
         if (error.message == "data and salt arguments required") {
-            res
-                .status(422)
-                .json({
-                    status: "failed",
-                    data: null,
-                    error:
-                        "Password is required, please insert a valid password and try again",
-                });
+            res.status(422).json({
+                status: "failed",
+                data: null,
+                error: "Password is required. Please insert a valid password and try again."
+            });
+        } else {
+            res.status(500).json({ status: "failed", data: null, error: "Internal server error" });
         }
     }
-
 });
 
 
@@ -235,9 +239,7 @@ router.patch("/user/:id", verifyToken, upload.single("file"), async (req, res) =
     let id = req.params.id;
     let data = req.body;
     let newFile = req.file ? req.file.originalname : null; // Verifica si se proporcionó un archivo
-    const options = {
-        new: true,
-    };
+    const options = { new: true };
 
     if (req.file) {
         // Si se proporciona un archivo, actualiza el campo "file" con el nombre de la nueva imagen
@@ -250,28 +252,49 @@ router.patch("/user/:id", verifyToken, upload.single("file"), async (req, res) =
         data.password = hashedPassword;
     }
 
-    Model.findByIdAndUpdate(id, data, options)
-        .then((updatedData) => {
-            const imageUrl = `http://localhost:9000/perfil/user/imagenes/${updatedData.file}`;
-            const responseData = {
-                _id: updatedData._id,
-                nombre: updatedData.nombre,
-                username: updatedData.username,
-                apellidos: updatedData.apellidos,
-                password: updatedData.password,
-                email: updatedData.email,
-                file: imageUrl,
-            };
-
-            res.status(200).json({ status: "succeeded", data: responseData, error: null });
-        })
-        .catch((error) =>
-            res.status(404).json({
+    try {
+        const existingUser = await Model.findOne({ $or: [{ username: data.username }, { email: data.email }] }).exec();
+        if (existingUser && existingUser._id != id) {
+            return res.status(409).json({
                 status: "failed",
                 data: null,
-                error: error.message,
+                error: "User o Email ya existen. Por favor elige otro User o Email.."
+            });
+        }
+
+        Model.findByIdAndUpdate(id, data, options)
+            .then((updatedData) => {
+                if (!updatedData) {
+                    return res.status(404).json({
+                        status: "failed",
+                        data: null,
+                        error: "User not found",
+                    });
+                }
+
+                const imageUrl = `http://localhost:9000/perfil/user/imagenes/${updatedData.file}`;
+                const responseData = {
+                    _id: updatedData._id,
+                    nombre: updatedData.nombre,
+                    username: updatedData.username,
+                    apellidos: updatedData.apellidos,
+                    password: updatedData.password,
+                    email: updatedData.email,
+                    file: imageUrl,
+                };
+
+                res.status(200).json({ status: "succeeded", data: responseData, error: null });
             })
-        );
+            .catch((error) =>
+                res.status(404).json({
+                    status: "failed",
+                    data: null,
+                    error: error.message,
+                })
+            );
+    } catch (error) {
+        res.status(500).json({ status: "failed", data: null, error: error.message });
+    }
 });
 
 

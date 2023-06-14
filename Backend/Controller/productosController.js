@@ -22,6 +22,19 @@ router.get("/", async (req, res) => {
     );
 });
 
+// Peticion para ver los detalles de un producto.
+router.get('/productos/:id', async (req, res) => {
+  try {
+    const producto = await Producto.findById(req.params.id);
+    if (!producto) {
+      return res.status(404).json({ status: 'error', data: null, error: 'Producto no encontrado' });
+    }
+    res.status(200).json({ status: 'success', data: producto, error: null });
+  } catch (error) {
+    res.status(500).json({ status: 'error', data: null, error: error.message });
+  }
+});
+
 // Peticiones para administradores.
 
 // Borrar producto.
@@ -121,6 +134,7 @@ router.get("/:id", (req, res) => {
         _id: data._id,
         nombrePastel: data.nombrePastel,
         precio: data.precio,
+        descripcionPastel: data.descripcionPastel,
         file: imageUrl,
       };
 
@@ -156,6 +170,7 @@ router.patch("/:id", verifyToken, isAdmin, upload.single("file"), (req, res) => 
         _id: updatedData._id,
         nombrePastel: updatedData.nombrePastel,
         precio: updatedData.precio,
+        descripcionPastel: req.body.descripcionPastel,
         file: imageUrl,
       };
 

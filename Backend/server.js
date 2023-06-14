@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const logins = require("./Controller/loginController");
 const productos = require("./Controller/productosController");
+const contactoController = require('./Controller/contactoController');
 const cors = require("cors");
 
 
@@ -18,13 +19,16 @@ dotenv.config();
 // endpoint
 
 app.use(cors({
-    origin: 'http://localhost:3000', // Reemplaza con la URL de tu aplicación de frontend
-    credentials: true,
-    sameSite: 'Lax' 
-  }));
+  origin: 'http://localhost:3000', // Reemplaza con la URL de tu aplicación de frontend
+  credentials: true,
+  sameSite: 'Lax'
+}));
+
 app.use("/users", logins);
 app.use("/auth", logins);
 app.use("/productos", productos);
+app.use("/contacto", contactoController);
+app.post('/contacto', contactoController);
 app.use('/imagenes', express.static('imagenes'));
 
 
@@ -32,10 +36,10 @@ app.use('/imagenes', express.static('imagenes'));
 
 // conexion a base de datos.
 
-mongoose.connect(process.env.DATABASE_URL,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-     
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+
 
 });
 
@@ -45,7 +49,7 @@ db.on("error", err => console.log("Connection to DB failed: ", err));
 db.once("open", () => console.log("Connected to DB successfuly"));
 
 
-app.listen(process.env.PORT , () => console.log("listening on port ", process.env.PORT)); 
+app.listen(process.env.PORT, () => console.log("listening on port ", process.env.PORT));
 
 
 

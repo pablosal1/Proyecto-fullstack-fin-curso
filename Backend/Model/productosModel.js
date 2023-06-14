@@ -12,6 +12,11 @@ let productosSchema = new Schema({
         type: String,
         required: [true, "Precio is required"]
     },
+    
+    descripcionPastel:{
+        type: String,
+        required: [true, "Descripcion is required"]
+    },
  
     file: {
         type:String,
