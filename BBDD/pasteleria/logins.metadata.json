@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"pasteleria.logins"},{"v":2,"unique":true,"key":{"email":1},"name":"email_1","ns":"pasteleria.logins","background":true},{"v":2,"unique":true,"key":{"password":1},"name":"password_1","ns":"pasteleria.logins","background":true}],"uuid":"12e2a1e2c35c4f008c2cec9b53139ef2"}
