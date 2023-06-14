@@ -76,8 +76,8 @@ Para este proyecto hemos usado diferentes endpoints los cuales son:
 | DELETE | /contacto/:id                       | admin         | Eliminar mensaje seleccionado          |
 
 ## Instalacion.
- - Para utilizar la base de datos primero hay que abrir el terminal y acceder a la carpeta la cual estan los archivos de BBDD de mongo ( En nuestro caso seria "/Proyecto/BBDD/dump).
-Una vez dentro ejecutamos el siguiente comando para copiar la base de datos. " mongorestore --db pasteleria dump/pasteleria ".
+ - Para utilizar la base de datos primero hay que abrir el terminal y acceder a la carpeta la cual estan los archivos de BBDD de mongo ( En nuestro caso seria "/Proyecto/BBDD/).
+Una vez dentro ejecutamos el siguiente comando para copiar la base de datos. " mongorestore --db pasteleria BBDD/pasteleria ".
 
  - Para usar este Backend, debemos de en la terminal acceder a la carpeta Backend( En este caso seria Proyecto/Backend/ ), y ejecutar el comando " npm install " para instalar las dependencias que hay en el proyecto. Una vez que termine de instalar, procedemos a ejecutarlo con el comando " npm start " y tendremos nuestro backend operativo.
 
